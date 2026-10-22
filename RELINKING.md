@@ -58,13 +58,14 @@ From the first distributed version on, each version's release has a relinking ki
 
 - Sub Player's object files and the file list that the linker reads;
 - `link.sh`, with the link command of that version's Release build;
-- the app's resources, `Info.plist`, and entitlements, and the frameworks that the version was built with;
+- `sign.sh`, which sets your bundle identifier and signs the app with your identity and your provisioning profile;
+- the app's resources and `Info.plist`, and the frameworks that the version was built with;
 - the kit's own instructions for that version.
 
-Replace a framework in the kit's `Frameworks` folder with yours, run `link.sh`, and sign the app as the kit describes,
-with your own bundle identifier, team, and provisioning profile. Entitlements that need Apple's approval, such as
-multicast networking for DLNA discovery, are not available to your account, so the kit's instructions leave them out;
-the app then works without the features that they enable.
+Replace a framework in the kit's `Frameworks` folder with yours, run `link.sh`, and sign the app with `sign.sh`, with
+your own bundle identifier, signing identity, and provisioning profile, whose entitlements the app gets. Entitlements
+that need Apple's approval, such as multicast networking for DLNA discovery on iPhone and iPad, are not in your
+profile, so the features that they enable do not work in your build.
 
 ## 4. Install
 
